@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523085543) do
+ActiveRecord::Schema.define(version: 20170523090054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 20170523085543) do
     t.string "location"
     t.integer "price", default: 0
     t.integer "capacity"
-    t.boolean "includes_food"
-    t.boolean "includes_drinks"
+    t.boolean "includes_food", default: false
+    t.boolean "includes_drinks", default: false
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
