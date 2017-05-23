@@ -1,0 +1,63 @@
+<%= form_for @event do |f| %>
+  <div class="form-group">
+    <label>Name</label>
+    <%= f.text_field :name, placeholder: "Name of your event", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Description</label>
+    <%= f.text_area :description, rows: 5, placeholder: "Say something about your event", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Location</label>
+    <%= f.text_field :location, placeholder: "Enter your event's location", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Ticket price</label>
+    <div class="input-group">
+      <div class="input-group-addon">€</div>
+      <%= f.number_field :price, placeholder: "eg. 100", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Capacity</label>
+    <div class="input-group">
+      <div class="input-group-addon">€</div>
+      <%= f.number_field :capacity, placeholder: "eg.6", class: "form-control" %>
+    </div>
+  </div>
+
+  <label>More about your event</label>
+
+  <div class="form-group">
+    <%= f.check_box :includes_food %> Includes food
+  </div>
+  <div class="form-group">
+    <%= f.check_box :includes_drinks %> Includes drinks
+  </div>
+
+
+  <div class="form-group">
+    <label>Starts at</label>
+  <%= f.datetime_select :starts_at %>
+  </div>
+
+  <div class="form-group">
+    <label>Ends at</label>
+  <%= f.datetime_select :ends_at %>
+  </div>
+
+
+  <label>Publish this event?</label>
+
+  <div class="form-group">
+    <%= f.check_box :active %> Active
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>
