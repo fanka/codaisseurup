@@ -1,9 +1,19 @@
 require 'rails_helper'
 
 describe "shared/_navbar.html.erb" do
-  before { sign_in user }
+
+  context "before sign_in" do
+
+    it "renders links to Log In and Sign Up" do
+      render
+      expect(rendered).to have_content "Log In"
+      expect(rendered).to have_content "Sign Up"
+    end
+
+  end
 
   context "without profile" do
+    before { sign_in user }
     let(:user) { create :user }
 
     it "renders email" do
@@ -13,6 +23,7 @@ describe "shared/_navbar.html.erb" do
   end
 
   context "with profile" do
+    before { sign_in user }
     let(:profile) { build :profile }
     let(:user) { create :user, profile: profile }
 
