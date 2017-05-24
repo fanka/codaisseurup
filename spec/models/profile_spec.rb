@@ -16,4 +16,9 @@ RSpec.describe Profile, type: :model do
       expect(subject).not_to include profile3
     end
   end
+
+  describe "assosiations with user" do
+    it { is_expected.to belong_to (:user) }
+  end
+
 end

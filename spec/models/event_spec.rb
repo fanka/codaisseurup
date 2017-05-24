@@ -39,18 +39,8 @@ RSpec.describe Event, type: :model do
   end
 end
 
-describe "association with category" do
-  let(:event) { create :event }
-
-  let(:category1) { create :category, name: "Leisure", events: [event] }
-  let(:category2) { create :category, name: "Business", events: [event] }
-  let(:category3) { create :category, name: "Something", events: [event] }
-
-  it "has categories" do
-    expect(event.categories).to include(category1)
-    expect(event.categories).to include(category2)
-    expect(event.categories).to include(category3)
-  end
+describe "assosiations" do
+  it { is_expected.to have_and_belong_to_many (:categories) }
 end
 
 end
