@@ -9,17 +9,15 @@
   </head>
 
   <body>
-    <div class="jumbotron">
-  <div class="container">
+    <div class="text-center" id="logo">
+      <%= link_to image_tag('https://image.ibb.co/dD3OVv/codaisseurup_logo.png'), root_path %>
+    </div>
+
     <%= render 'shared/navbar' %>
-    <h1>CodaisseurUp!</h1>
-  <p>...</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-  </div>
-</div>
 
     <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     <%= yield %>
+
   </body>
 </html>

@@ -1,4 +1,6 @@
 <%= form_for @profile do |f| %>
+<ul>
+  <%= render 'errors' %>
   <% @profile.errors.full_messages.each do |msg| %>
     <p class="alert alert-danger"><%= msg %></p>
   <% end %>
