@@ -2,9 +2,11 @@ class RegistrationsController < ApplicationController
   before_action :authenticate_user!
   def create
     @registration = current_user.registrations.create(registration_params)
-    @registration.set_total_price
-    @registration.save
-    redirect_to @registration.event, notice: "Thank you for registering!"
+    if @booking.event_available?
+      @registration.save
+      redirect_to @registration.event, notice: "Thank you for registering!"
+    else
+      redirect_to @registration.event, notice: "Sorry, there're no more available tickets for the chosen event."
   end
 
   private

@@ -15,6 +15,9 @@ class Event < ApplicationRecord
     end
   end
 =end
+def available?
+  guests.count < capacity
+end
 
 def bargain?
     price < 30
@@ -23,5 +26,7 @@ end
 def self.order_by_price
     order(:price)
 end
+
+
 
 end

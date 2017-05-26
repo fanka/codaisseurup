@@ -1,6 +1,53 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
+  describe "#available?" do
+      let(:host_user) { create :user, email: "host@user.com" }
+      let(:guest_user) { create :user, email: "guest@user.com" }
+
+      let(:event) { create :event, price: 20, user: host_user, capacity: 20 }
+
+      let!(:existent_registration) {
+        create :registration,
+          event: event,
+          guest_count: 2,
+          user: guest_user
+      }
+
+      context "is available" do
+        let(:event) { create :event, price: 20, user: host_user, capacity: 20  }
+
+        let!(:existent_registration) {
+          create :registration,
+            event: event,
+            guest_count: 2,
+            user: guest_user
+        }
+        subject { event.available? }
+
+        it "returns true" do
+          expect(subject).to be true
+        end
+      end
+
+      context "is not available" do
+        let(:event) { create :event, price: 20, user: host_user, capacity: 1  }
+
+        let!(:existent_registration) {
+          create :registration,
+            event: event,
+            guest_count: 2,
+            user: guest_user
+        }
+        subject { event.available? }
+
+        it "returns false" do
+          expect(subject).to be false
+        end
+      end
+    end
+
+
   describe "validations" do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:description) }
