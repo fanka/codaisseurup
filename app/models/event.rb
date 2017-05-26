@@ -4,6 +4,9 @@ class Event < ApplicationRecord
   has_and_belongs_to_many :categories
   validates :name, :starts_at, :ends_at, presence: true
   validates :description, presence: true, length: {maximum: 500}
+  has_many :registrations, dependent: :destroy
+  has_many :guests, through: :registrations, source: :user
+
 =begin  validate :end_date_after_start_date?
 
   def end_date_after_start_date?
