@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Category.destroy_all
 User.destroy_all
+Registration.delete_all
 
 business = Category.create(name:"Business")
 leisure = Category.create(name:"Leisure")
