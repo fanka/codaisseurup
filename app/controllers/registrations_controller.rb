@@ -8,6 +8,7 @@ class RegistrationsController < ApplicationController
     else
       redirect_to @registration.event, notice: "Sorry, there're no more available tickets for the chosen event."
   end
+end
 
   private
 
