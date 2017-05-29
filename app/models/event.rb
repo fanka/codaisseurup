@@ -6,6 +6,7 @@ class Event < ApplicationRecord
   validates :description, presence: true, length: {maximum: 500}
   has_many :registrations, dependent: :destroy
   has_many :guests, through: :registrations, source: :user
+  has_many :photos, dependent: :destroy
 
 =begin  validate :end_date_after_start_date?
 
